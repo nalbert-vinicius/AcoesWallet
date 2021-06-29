@@ -1,0 +1,78 @@
+<form 
+    [formGroup]="formularioCadastro" 
+    class="login100-form" 
+    autocomplete="off"
+    (ngSubmit)="cadastrar()"
+    >
+                
+    <span class="login100-form-title p-b-49">
+        Criar usuario
+    </span>
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Nome</span>
+        <input class="input100"
+               type="text" 
+               formControlName="nome"
+               placeholder="Digite seu nome">
+               <ng-container *ngIf="formularioCadastro.controls.nome.touched">
+                    <span 
+                    *ngIf="formularioCadastro.controls.nome.errors">
+                        Digite seu nome
+                    </span>
+                </ng-container>
+    </div>
+
+    <div class="wrap-input100 m-b-23">
+        <span class="label-input100">Email</span>
+        <input class="input100"
+               type="email" 
+               formControlName="email"
+               placeholder="Digite seu email">
+               <ng-container *ngIf="formularioCadastro.controls.email.touched">
+                    <span 
+                    *ngIf="formularioCadastro.controls.email.errors?.email">
+                        Campo e-mail obrigatório
+                    </span>
+               </ng-container>
+    </div>
+
+    <div class="wrap-input100">
+        <span class="label-input100">Password</span>
+        <input class="input100"
+               type="password"
+               formControlName="senha"
+               placeholder="Digite sua senha">
+               <ng-container *ngIf="formularioCadastro.controls.senha.touched">
+                    <span 
+                    *ngIf="formularioCadastro.controls.senha.errors">
+                        Digite no minimo 6 caracteres
+                    </span>
+                </ng-container>
+    </div>
+    
+    <div class="text-right p-t-8 p-b-31"></div>
+    
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button 
+            class="login100-form-btn"
+            type="submit"
+            [disabled]="formularioCadastro.invalid"
+            >
+                Cadastrar
+            </button>
+        </div>
+    </div>
+
+    <div class="flex-col-c p-t-60">
+        <span class="txt1 p-b-17">
+            Já possui uma conta?
+        </span>
+
+        <a routerLink="/auth/login" class="txt2">
+            Entrar aqui
+        </a>
+    </div>
+</form>
