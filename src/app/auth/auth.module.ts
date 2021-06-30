@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     LoginComponent,
     MainComponent,
-    RegistrarComponent
+    RegistrarComponent,
   ],
   imports: [
     CommonModule,

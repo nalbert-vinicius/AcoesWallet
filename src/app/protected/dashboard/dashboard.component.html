@@ -4,7 +4,7 @@
     Pagina de dashboard só funciona se estiver autenticado
 </p>
 <h4>Informações usuario</h4>
-<pre> ... </pre>
+<pre> {{ usuario | json}} </pre>
 <button (click)="logout()">
     Logout
 </button>
