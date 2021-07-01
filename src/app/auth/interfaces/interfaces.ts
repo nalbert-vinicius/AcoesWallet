@@ -1,18 +1,23 @@
 export interface LoginResponse {
-    msg?: String,
+    msg?: string,
     Ok?: boolean,
-    token?: String
+    token?: string
+}
+
+export interface TokenResponse{
+    msg?: string,
+    Ok?: boolean
 }
 
 export interface UsuarioResponse {
-    msg?: String,
+    msg?: string,
     Ok?: boolean,
     Object: Object[]
 }
 
 export interface Object {
-    _id?: String,
-    nome?: String,
-    email?: String,
-    senha?: String,
+    _id?: string,
+    nome?: string,
+    email?: string,
+    senha?: string,
 }
