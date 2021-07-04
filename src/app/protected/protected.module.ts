@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 
 import { ProtectedRoutingModule } from './protected-routing.module';
+import { MaterialModule } from '../material/material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
     ProtectedRoutingModule,
-    FlexLayoutModule
+    MaterialModule
   ]
 })
 export class ProtectedModule { }
