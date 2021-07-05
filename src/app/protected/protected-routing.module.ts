@@ -8,8 +8,8 @@ const routes: Routes = [
     path: '',
     component: MenuComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: '**', redirectTo: 'dashboard'}
+      {path: 'admin', component: DashboardComponent},
+      {path: '**', redirectTo: 'admin'}
     ]
   }
 ];
