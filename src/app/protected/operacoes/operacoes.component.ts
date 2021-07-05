@@ -1,23 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, AfterViewInit } from '@angular/core';
 
-@Component({
-  selector: 'app-operacoes',
-  templateUrl: './operacoes.component.html',
-  styleUrls: ['./operacoes.component.css']
-})
-export class OperacoesComponent implements AfterViewInit {
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-}
 
 export interface PeriodicElement {
   name: string;
@@ -48,3 +30,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
 ];
+
+@Component({
+  selector: 'app-operacoes',
+  templateUrl: './operacoes.component.html',
+  styleUrls: ['./operacoes.component.css']
+})
+export class OperacoesComponent implements AfterViewInit {
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
+
+  ngAfterViewInit() {
+    this.dataSource;
+  }
+}
+
