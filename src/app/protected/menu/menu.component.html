@@ -1,47 +1,45 @@
 <mat-sidenav-container fullscreen>    
     <mat-sidenav #sidenav mode="push" color="primary">
         <mat-toolbar color="primary">
+            <span>Menu</span>
             <span class="spacer"></span>
-            <button 
-            mat-icon-button-white
-            style="color: white"
-            (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
+            <button
+                    (click)="sidenav.toggle()">
             </button>       
         </mat-toolbar>
         <mat-nav-list>
-            <a routerLink="./listado"
+            <a routerLink="./admin"
                mat-list-item
                (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon-black>label</mat-icon>
-                <span>Lista de ações</span>
+                <span>Dashboard</span>
             </a>
-            <a routerLink="./agregar"
+            <a routerLink="./acoes"
                mat-list-item
                (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>add</mat-icon>
-                <span>Adicionar Ações</span>
+                
+                <span>Ações</span>
             </a>
-            <a routerLink="./buscar"
+            <a routerLink="./operacoes"
                mat-list-item
                (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>search</mat-icon>
-                <span>Búscar Ações</span>
+                <span>Operações</span>
             </a>
         </mat-nav-list>  
     </mat-sidenav>
     <mat-toolbar>
         <button 
         mat-icon-button
-        style="color: white"
-        (click)="sidenav.toggle()">  
-            <mat-icon>menu</mat-icon>
+        style="color: white;"
+        (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
         </button>
         <span class="spacer"></span>
         <span></span>
-        <button mat-button
-                (click)="logout()">
-            Logout
+        <button 
+        mat-button
+        style="color: white;"
+        (click)="logout()">
+        Logout
         </button>
     </mat-toolbar>
     <div class="container">

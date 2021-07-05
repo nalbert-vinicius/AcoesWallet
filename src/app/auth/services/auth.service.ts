@@ -30,6 +30,7 @@ export class AuthService {
     .pipe(
       tap(result =>{
         if(result.Ok){
+          console.log(result)
           localStorage.setItem('token', result.token!);
           this._usuario = {
             msg: result.msg,
