@@ -21,3 +21,10 @@ export interface Object {
     email?: string,
     senha?: string,
 }
+
+export interface Usuarios {
+    nome?: string,
+    email?: string,
+    senha?: string,
+}
+

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2'
 
@@ -10,7 +10,10 @@ import Swal from 'sweetalert2'
   styles: [
   ]
 })
-export class LoginComponent {
+
+export class LoginComponent implements OnInit{
+
+  mensagem: any;
 
   formulario: FormGroup = this.fb.group({
     email: ['',[Validators.required, Validators.email]],
@@ -19,8 +22,17 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+    private routeParam: ActivatedRoute
   ) { }
+
+  ngOnInit(){
+   this.mensagem = this.routeParam.snapshot.queryParamMap.get('id');
+   if(this.mensagem == 1){
+    this.mensagem = "Usuário cadastrado com sucesso!";
+   }
+   console.log(this.mensagem);
+  }
 
   login(){
     const {email, senha} = this.formulario.value;
@@ -28,7 +40,7 @@ export class LoginComponent {
       if(ok == true){
         this.route.navigateByUrl('/dashboard');
       }else{
-        Swal.fire('Error', ok, 'error');
+        this.mensagem = ok;
       }
     })
   }
