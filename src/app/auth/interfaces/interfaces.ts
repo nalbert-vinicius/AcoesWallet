@@ -28,3 +28,11 @@ export interface Usuarios {
     senha?: string,
 }
 
+export interface Operacao {
+    Sigla: string;
+    Position: number;
+    Tipo: string;
+    Quantidade: number;
+    Valor: number;
+}
+

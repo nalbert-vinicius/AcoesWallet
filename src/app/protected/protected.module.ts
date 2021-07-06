@@ -16,7 +16,7 @@ import { OperacoesComponent } from './operacoes/operacoes.component';
     DashboardComponent,
     MenuComponent,
     AcoesComponent,
-    OperacoesComponent
+    OperacoesComponent,
   ],
   imports: [
     CommonModule,
