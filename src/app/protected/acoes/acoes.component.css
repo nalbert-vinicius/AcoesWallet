@@ -1,8 +1,28 @@
-table {
+
+
+  .container {
+    padding: 100px auto;
+  }
+
+  table {
     width: 100%;
+    margin-top: 20px;
+    margin: 20px auto;
   }
 
   .mat-form-field {
     font-size: 14px;
     width: 100%;
+  }
+
+  .icones {
+    text-align: right !important;
+  }
+
+  th {
+    width: 10%;
+  }
+
+  .pointer {
+    cursor: pointer;
   }

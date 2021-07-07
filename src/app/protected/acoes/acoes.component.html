@@ -1,66 +1,72 @@
+<div class="container">
+  <mat-toolbar>
+    <span>Ações</span>
+  </mat-toolbar>
+
 <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
   </mat-form-field>
+  <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort >
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-          <ng-container matColumnDef="Position">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.Position}} </td>
-          </ng-container>
-      
-          <!-- Nome Column -->
-          <ng-container matColumnDef="Sigla">
-            <th mat-header-cell *matHeaderCellDef> Sigla </th>
-            <td mat-cell *matCellDef="let element"> {{element.Sigla}} </td>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="Tipo">
-            <th mat-header-cell *matHeaderCellDef> Tipo Operação</th>
-            <td mat-cell *matCellDef="let element"> {{element.Tipo}} </td>
-          </ng-container>
-      
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="Quantidade">
-            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-            <td mat-cell *matCellDef="let element"> {{element.Quantidade}} </td>
-          </ng-container>
-      
-          <ng-container matColumnDef="Valor">
-            <th mat-header-cell *matHeaderCellDef> Valor Unitário</th>
-            <td mat-cell *matCellDef="let element"> {{element.Valor}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="açoes">
-            <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let element"> 
-             <a>
-                 <mat-icon>
-                     search
-                 </mat-icon>
-             </a>
-             <a>
-                <mat-icon>
-                    edit
-                </mat-icon>
-            </a>
-            <a>
-                <mat-icon>
-                    delete
-                </mat-icon>
-            </a>
-            </td>
-          </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
     
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            <ng-container matColumnDef="Position">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.Position}} </td>
+            </ng-container>
+        
+            <!-- Nome Column -->
+            <ng-container matColumnDef="Sigla">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Sigla </th>
+              <td mat-cell *matCellDef="let element"> {{element.Sigla}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Tipo">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Operação</th>
+              <td mat-cell *matCellDef="let element"> {{element.Tipo}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Quantidade">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade </th>
+              <td mat-cell *matCellDef="let element"> {{element.Quantidade}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="Valor">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor Unitário</th>
+              <td mat-cell *matCellDef="let element"> {{element.Valor}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="açoes">
+              <th mat-header-cell *matHeaderCellDef > </th>
+              <td mat-cell *matCellDef="let element" class="icones"> 
+               <a class="pointer" matTooltip="Visualizar">
+                   <mat-icon color="primary">
+                       search
+                   </mat-icon>
+               </a>
+               <a class="pointer" matTooltip="Editar">
+                  <mat-icon color="accent">
+                      edit
+                  </mat-icon>
+              </a>
+              <a class="pointer" matTooltip="Excluir">
+                  <mat-icon color="warn" >
+                      delete
+                  </mat-icon>
+              </a>
+              </td>
+            </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>
