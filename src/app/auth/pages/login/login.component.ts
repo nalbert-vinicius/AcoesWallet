@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit{
    if(this.mensagem == 1){
     this.mensagem = "Usuário cadastrado com sucesso!";
    }
-   console.log(this.mensagem);
   }
 
   login(){

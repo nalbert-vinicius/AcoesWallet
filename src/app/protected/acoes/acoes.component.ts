@@ -3,42 +3,43 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
+import { operacaoService } from 'src/app/services/operacaoService';
 
-const LISTA_ACOES: Operacao[] = [
-  {Position: 1,  Sigla : 'Hydrogen', Tipo: 'SwingTrade', Quantidade: 100, Valor: 22    },
-  {Position: 2,  Sigla : 'Helium', Tipo: 'SwingTrade', Quantidade: 100,    Valor: 22   },
-  {Position: 3,  Sigla : 'Lithium', Tipo: 'SwingTrade', Quantidade: 100,    Valor: 22   },
-  {Position: 4,  Sigla : 'Beryllium', Tipo: 'SwingTrade', Quantidade: 100, Valor: 22   },
-  {Position: 5,  Sigla : 'Boron', Tipo: 'SwingTrade', Quantidade: 100,    Valor: 22    },
-  {Position: 6,  Sigla : 'Carbon', Tipo: 'SwingTrade', Quantidade: 100,   Valor: 22   },
-  {Position: 7,  Sigla : 'Nitrogen', Tipo: 'SwingTrade', Quantidade: 100, Valor: 22   },
-  {Position: 8,  Sigla : 'Oxygen', Tipo: 'SwingTrade', Quantidade: 100,   Valor: 22   },
-  {Position: 9,  Sigla : 'Fluorine', Tipo: 'SwingTrade', Quantidade: 100, Valor: 22   },
-  {Position: 10, Sigla : 'Neon', Tipo: 'SwingTrade', Quantidade: 100,     Valor: 22   },
-  {Position: 11, Sigla : 'Neon', Tipo: 'SwingTrade', Quantidade: 100,     Valor: 22   }
-];
 
 @Component({
   selector: 'app-acoes',
   templateUrl: './acoes.component.html',
+  providers: [operacaoService],
   styleUrls: ['./acoes.component.css']
 })
 export class AcoesComponent implements OnInit {
 
-  displayedColumns: string[] = ['Position', 'Sigla', 'Tipo', 'Quantidade', 'Valor', 'açoes'];
-  dataSource = new MatTableDataSource(LISTA_ACOES);
+  listaOperacao: Operacao[] = [];
+  displayedColumns: string[] = ['tag', 'quantidade' ,'valorUnitario', 'tipoOperacao', 'dataInicio', 'acoes'];
+  dataSource!:MatTableDataSource<Operacao>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor() { }
+  constructor(
+    private operacaoService: operacaoService
+  ) { }
 
   ngOnInit(): void {
+    this.listarOperacao()
+  }
+
+  listarOperacao(){
+    this.operacaoService.listarOperacao().then((data: any) =>{
+      this.listaOperacao = data.result;
+      this.dataSource = new MatTableDataSource(this.listaOperacao)
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
   }
 
   applyFilter(event: Event) {

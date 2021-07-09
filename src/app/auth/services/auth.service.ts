@@ -30,7 +30,6 @@ export class AuthService {
     .pipe(
       tap(result =>{
         if(result.Ok){
-          console.log(result)
           localStorage.setItem('token', result.token!);
           this._usuario = {
             msg: result.msg,
@@ -53,7 +52,6 @@ export class AuthService {
     return this.http.post<TokenResponse>( url, null, { headers } )
         .pipe(
           map( resp => {
-            console.log(resp)
             this._usuario = {
               msg: resp.msg,
               Ok: resp.Ok,

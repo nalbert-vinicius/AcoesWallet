@@ -29,10 +29,21 @@ export interface Usuarios {
 }
 
 export interface Operacao {
-    Sigla: string;
-    Position: number;
-    Tipo: string;
-    Quantidade: number;
-    Valor: number;
+    _id: string,
+    dataInicio: Date;
+    quantidade: number;
+    tag: string;
+    tipoOperacao: string;
+    usuario: User[],
+    valorUnitario: number
 }
+
+export interface User {
+    email: string,
+    _id: string
+}
+
+
+
+
 

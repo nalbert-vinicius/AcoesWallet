@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuarios } from 'src/model/usuario-model';
-import { usuariosService } from '../../services/usuarioService';
-import Swal from 'sweetalert2'
+import { usuariosService } from '../../../services/usuarioService';
 
 @Component({
   selector: 'app-registrar',
