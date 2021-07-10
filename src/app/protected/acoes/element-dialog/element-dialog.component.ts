@@ -14,6 +14,7 @@ export class ElementDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ElementDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Operacao,) {
+      
     }
 
   async excluirAcao(data: any) {

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Criar Operacao</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Ação: </mat-label>
+    <input matInput [(ngModel)]="data.tag">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantidade: </mat-label>
+    <input matInput [(ngModel)]="data.quantidade">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Valor Unitario: </mat-label>
+    <input matInput [(ngModel)]="data.valorUnitario">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo Operacao: </mat-label>
+    <input matInput [(ngModel)]="data.tipoOperacao">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Data Operacao: </mat-label>
+    <input matInput [(ngModel)]="data.dataInicio">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="sair(null)" >Cancelar</button>
+  <button mat-button (click)="salvar(data)" [mat-dialog-close]="data"  cdkFocusInitial>Criar</button>
+</div>

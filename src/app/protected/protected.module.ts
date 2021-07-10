@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AcoesComponent } from './acoes/acoes.component';
 import { OperacoesComponent } from './operacoes/operacoes.component';
 import { ElementDialogComponent } from './acoes/element-dialog/element-dialog.component';
+import { ElementDialogAdicionarEditarComponent } from './acoes/element-dialog-adicionar-editar/element-dialog-adicionar-editar.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ElementDialogComponent } from './acoes/element-dialog/element-dialog.co
     AcoesComponent,
     OperacoesComponent,
     ElementDialogComponent,
+    ElementDialogAdicionarEditarComponent,
   ],
   imports: [
     CommonModule,

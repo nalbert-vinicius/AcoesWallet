@@ -1,10 +1,10 @@
 <div class="container">
-  <mat-toolbar>
-    <span>Ações</span>
-  </mat-toolbar>
+  
+    <button color="primary" mat-button (click)="criarOperacao(null)">Adicionar Operacao</button>
+ 
 
-<mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
+  <mat-form-field>
+    <mat-label>Filtros</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
   </mat-form-field>
   <div class="mat-elevation-z8">
@@ -48,7 +48,7 @@
                        search
                    </mat-icon>
                </a>
-               <a class="pointer" matTooltip="Editar">
+               <a class="pointer" matTooltip="Editar" (click)="criarOperacao(element)">
                   <mat-icon color="accent">
                       edit
                   </mat-icon>

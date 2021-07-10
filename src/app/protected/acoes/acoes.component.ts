@@ -4,8 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
 import { operacaoService } from 'src/app/services/operacaoService';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ElementDialogComponent } from './element-dialog/element-dialog.component';
+import { ElementDialogAdicionarEditarComponent } from './element-dialog-adicionar-editar/element-dialog-adicionar-editar.component';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class AcoesComponent implements OnInit {
     this.ngOnInit();
   }
 
-  openDialog(operacao: Operacao){
+  openOperacao(operacao: Operacao): void{
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '250px',
       data: operacao
@@ -60,6 +61,23 @@ export class AcoesComponent implements OnInit {
       if(result){
         this.excluirOperacao(result);
       }
+    });
+  }
+
+  criarOperacao(element: Operacao | null): void{
+    const dialogRef = this.dialog.open(ElementDialogAdicionarEditarComponent, {
+      width: '250px',
+      data: element == null ? {
+        dataInicio: null,
+        quantidade: null,
+        tag: null,
+        tipoOperacao: null,
+        valorUnitario: null
+      } : element
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result);
     });
   }
 
