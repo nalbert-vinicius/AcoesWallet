@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Excluir Ação</h1>
+<div mat-dialog-content>
+  <p>Deseja excluir ação?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button >Não</button>
+  <button mat-button (click)="excluirAcao(data)" [mat-dialog-close]="data" cdkFocusInitial>Sim</button>
+</div>

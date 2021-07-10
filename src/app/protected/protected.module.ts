@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 
 
+
 import { ProtectedRoutingModule } from './protected-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuComponent } from './menu/menu.component';
 import { AcoesComponent } from './acoes/acoes.component';
 import { OperacoesComponent } from './operacoes/operacoes.component';
+import { ElementDialogComponent } from './acoes/element-dialog/element-dialog.component';
 
 
 @NgModule({
@@ -17,11 +19,12 @@ import { OperacoesComponent } from './operacoes/operacoes.component';
     MenuComponent,
     AcoesComponent,
     OperacoesComponent,
+    ElementDialogComponent,
   ],
   imports: [
     CommonModule,
     ProtectedRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class ProtectedModule { }

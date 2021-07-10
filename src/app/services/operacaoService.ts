@@ -18,4 +18,8 @@ export class operacaoService {
         return this.http.get<Operacao>(`${environment.baseUrl}operacoes`, { headers }).toPromise();
     }
 
+    deletarOperacao(id: any){
+        return this.http.delete(`${environment.baseUrl}operacoes/deletar/`+id, { headers }).toPromise();    
+    }
+
 }

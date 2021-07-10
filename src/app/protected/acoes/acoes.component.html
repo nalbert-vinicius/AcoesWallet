@@ -53,7 +53,8 @@
                       edit
                   </mat-icon>
               </a>
-              <a class="pointer" matTooltip="Excluir">
+             
+              <a (click)="openDialog(element._id)" class="pointer" matTooltip="Excluir">
                   <mat-icon color="warn" >
                       delete
                   </mat-icon>

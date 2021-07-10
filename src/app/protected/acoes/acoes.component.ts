@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
 import { operacaoService } from 'src/app/services/operacaoService';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ElementDialogComponent } from './element-dialog/element-dialog.component';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class AcoesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   
   constructor(
-    private operacaoService: operacaoService
+    private operacaoService: operacaoService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,25 @@ export class AcoesComponent implements OnInit {
   ngAfterViewInit() {
     
   }
+  
+  async excluirOperacao(id: any){
+    await this.operacaoService.deletarOperacao(id);
+    this.ngOnInit();
+  }
+
+  openDialog(operacao: Operacao){
+    const dialogRef = this.dialog.open(ElementDialogComponent, {
+      width: '250px',
+      data: operacao
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.excluirOperacao(result);
+      }
+    });
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -50,5 +72,5 @@ export class AcoesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
+
