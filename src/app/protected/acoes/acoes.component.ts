@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
 import { operacaoService } from 'src/app/services/operacaoService';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -17,9 +17,10 @@ import { ElementDialogAdicionarEditarComponent } from './element-dialog-adiciona
 })
 export class AcoesComponent implements OnInit {
 
+  @ViewChild (MatTable) table: MatTable<any>;
   listaOperacao: Operacao[] = [];
   displayedColumns: string[] = ['tag', 'quantidade' ,'valorUnitario', 'tipoOperacao', 'dataInicio', 'acoes'];
-  dataSource!:MatTableDataSource<Operacao>;
+  dataSource!: MatTableDataSource<Operacao>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -34,7 +35,7 @@ export class AcoesComponent implements OnInit {
   }
 
   listarOperacao(){
-    this.operacaoService.listarOperacao().then((data: any) =>{
+    this.operacaoService.listarOperacao().subscribe((data: any) =>{
       this.listaOperacao = data.result;
       this.dataSource = new MatTableDataSource(this.listaOperacao)
       this.dataSource.paginator = this.paginator;
@@ -77,8 +78,34 @@ export class AcoesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("result", result);
+      if (result !== undefined) {
+        
+         if (result._id == undefined) {
+          this.operacaoService.criarOperacao(result)
+              .subscribe(
+          (data: Operacao) => {
+                // falta mostrar a mensagem de sucesso
+                console.log(data);
+                this.ngOnInit();
+          },
+          (err) => {
+            // falta mostrar a mensagem de erro
+            console.log(err);
+            this.ngOnInit();
+          });
+          //this.table.renderRows();
+          
+        } else {
+          console.log("result com id", result);
+          this.table.renderRows();
+        }
+        
+      }
     });
+  }
+
+  editarOperacao(element: Operacao): void{
+    this.criarOperacao(element);
   }
 
 

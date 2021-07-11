@@ -8,7 +8,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
   </mat-form-field>
   <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort >
+      <table #table mat-table [dataSource]="dataSource" matSort >
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -48,7 +48,7 @@
                        search
                    </mat-icon>
                </a>
-               <a class="pointer" matTooltip="Editar" (click)="criarOperacao(element)">
+               <a class="pointer" matTooltip="Editar" (click)="editarOperacao(element)">
                   <mat-icon color="accent">
                       edit
                   </mat-icon>

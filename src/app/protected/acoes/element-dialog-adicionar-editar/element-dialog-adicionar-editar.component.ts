@@ -10,27 +10,30 @@ import { Operacao } from 'src/app/auth/interfaces/interfaces';
 export class ElementDialogAdicionarEditarComponent implements OnInit {
 
   operacoesAcao!: Operacao;
+  isChange: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ElementDialogAdicionarEditarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Operacao,) {
-      console.log("teste", data);
+     
     }
 
   async sair(data: any) {
-    console.log("sair", data);
     this.dialogRef.close(data);
   }
 
   async salvar(data: any) {
-    console.log("operacao", data);
     this.dialogRef.close(data);
   }
 
   
 
-  ngOnInit(){
-    
+  ngOnInit(): void{
+    if (this.data.tag != null) {
+      this.isChange = true;
+    } else {
+      this.isChange = false;
+    }
   }
 
 }
