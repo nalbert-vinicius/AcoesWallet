@@ -27,4 +27,8 @@ export class operacaoService {
         return this.http.post<Operacao>(`${environment.baseUrl}operacoes/cadastrar`, operacao, { headers });    
     }
 
+    editarOperacao(id: string, operacao: Operacao): Observable<Operacao>{
+        return this.http.patch<Operacao>(`${environment.baseUrl}operacoes/atualizar/`+id, operacao, { headers });    
+    }
+
 }

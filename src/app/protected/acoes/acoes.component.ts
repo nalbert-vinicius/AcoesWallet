@@ -96,8 +96,19 @@ export class AcoesComponent implements OnInit {
           //this.table.renderRows();
           
         } else {
-          console.log("result com id", result);
-          this.table.renderRows();
+              this.operacaoService.editarOperacao(result._id,result)
+              .subscribe(
+                (data: Operacao) => {
+                      // falta mostrar a mensagem de sucesso
+                      console.log(data);
+                      this.ngOnInit();
+                },
+                (err) => {
+                  // falta mostrar a mensagem de erro
+                  console.log(err);
+                  this.ngOnInit();
+                }
+              );
         }
         
       }
