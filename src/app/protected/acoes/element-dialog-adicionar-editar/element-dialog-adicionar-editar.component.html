@@ -13,9 +13,13 @@
     <mat-label>Valor Unitario: </mat-label>
     <input matInput [(ngModel)]="data.valorUnitario">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Tipo Operacao: </mat-label>
-    <input matInput [(ngModel)]="data.tipoOperacao">
+    <mat-select [(ngModel)]="data.tipoOperacao">
+      <mat-option *ngFor="let options of option" [value]="options.value">
+        {{options.value}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Data da Operação</mat-label>

@@ -1,4 +1,7 @@
 .mat-toolbar {
     background: #673ab7;
 }
+mat-icon{
+    color: white;
+}
 

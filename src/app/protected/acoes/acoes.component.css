@@ -1,14 +1,12 @@
-
-
-  .container {
-    padding: 100px auto;
-  }
+.container {
+  padding: 100px auto;
+}
 
   table {
-    width: 100%;
-    margin-top: 20px;
-    margin: 20px auto;
-  }
+  width: 100%;
+  margin-top: 20px;
+  margin: 20px auto;
+}
 
   .mat-form-field {
     font-size: 14px;
@@ -25,4 +23,14 @@
 
   .pointer {
     cursor: pointer;
+  }
+
+  .data-table{
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .card {
+    width: 90%;
+    margin: 20px auto;
   }

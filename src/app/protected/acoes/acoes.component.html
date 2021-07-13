@@ -1,72 +1,71 @@
 <div class="container">
-    <br>
-    <button mat-raised-button color="primary"  (click)="criarOperacao(null)">Cadastrar operação</button>
- 
-
-  <mat-form-field>
-    <mat-label>Filtros</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
-  </mat-form-field>
-  <div class="mat-elevation-z8">
-      <table #table mat-table [dataSource]="dataSource" matSort >
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-    
-            <ng-container matColumnDef="tag">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Ação </th>
-              <td mat-cell *matCellDef="let element"> {{element.tag}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="quantidade">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade </th>
-              <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="valorUnitario">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor Unitário </th>
-              <td mat-cell *matCellDef="let element"> {{element.valorUnitario}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="tipoOperacao">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo operação</th>
-              <td mat-cell *matCellDef="let element"> {{element.tipoOperacao}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="dataInicio">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Operação </th>
-              <td mat-cell *matCellDef="let element"> {{element.dataInicio | date: 'dd/MM/yyyy'}} </td>
-            </ng-container>
-        
-        
+  <mat-card class="card">
+    <mat-card-content>
+      <h2>Minhas ações</h2>
+      <mat-form-field appearance="fill">
+        <mat-label>Filtros</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+      </mat-form-field>
+      <button mat-raised-button color="primary" appearance="fill"  (click)="criarOperacao(null)">Cadastrar operação</button>
       
-            <ng-container matColumnDef="acoes">
-              <th mat-header-cell *matHeaderCellDef > </th>
-              <td mat-cell *matCellDef="let element" class="icones"> 
-               <a class="pointer" matTooltip="Visualizar">
-                   <mat-icon color="primary">
-                       search
-                   </mat-icon>
-               </a>
-               <a class="pointer" matTooltip="Editar" (click)="editarOperacao(element)">
-                  <mat-icon color="accent">
-                      edit
-                  </mat-icon>
-              </a>
-             
-              <a (click)="deletarOperacao(element._id)" class="pointer" matTooltip="Excluir">
-                  <mat-icon color="warn" >
-                      delete
-                  </mat-icon>
-              </a>
-              </td>
-            </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-    </table>
-    
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
+      <div class="mat-elevation-z8 data-table">
+          <table #table mat-table [dataSource]="dataSource" matSort >
+                <ng-container matColumnDef="tag">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Ação </th>
+                  <td mat-cell *matCellDef="let element"> {{element.tag}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="quantidade">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantidade </th>
+                  <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="valorUnitario">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor Unitário </th>
+                  <td mat-cell *matCellDef="let element"> {{element.valorUnitario}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoOperacao">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo operação</th>
+                  <td mat-cell *matCellDef="let element"> {{element.tipoOperacao}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="dataInicio">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Operação </th>
+                  <td mat-cell *matCellDef="let element"> {{element.dataInicio | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+            
+            
+          
+                <ng-container matColumnDef="acoes">
+                  <th mat-header-cell *matHeaderCellDef > </th>
+                  <td mat-cell *matCellDef="let element" class="icones"> 
+                  <a class="pointer" matTooltip="Visualizar">
+                      <mat-icon color="primary">
+                          search
+                      </mat-icon>
+                  </a>
+                  <a class="pointer" matTooltip="Editar" (click)="editarOperacao(element)">
+                      <mat-icon color="accent">
+                          edit
+                      </mat-icon>
+                  </a>
+                
+                  <a (click)="deletarOperacao(element._id)" class="pointer" matTooltip="Excluir">
+                      <mat-icon color="warn" >
+                          delete
+                      </mat-icon>
+                  </a>
+                  </td>
+                </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

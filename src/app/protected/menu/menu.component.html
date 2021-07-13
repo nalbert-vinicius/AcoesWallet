@@ -34,13 +34,25 @@
         <mat-icon>menu</mat-icon>
         </button>
         <span class="spacer"></span>
-        <span></span>
         <button 
         mat-button
         style="color: white;"
-        (click)="logout()">
+        [matMenuTriggerFor]="menu"
+        >
+        <mat-icon mat-list-icon>people</mat-icon>
         {{usuario.nome}}
         </button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item [routerLink]="['/Dashboard']">
+                <mat-icon>person</mat-icon>
+                <span>Minha conta</span>
+              </a>
+        
+              <a mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+              </a>
+        </mat-menu>
     </mat-toolbar>
     <div class="container">
         <router-outlet></router-outlet>

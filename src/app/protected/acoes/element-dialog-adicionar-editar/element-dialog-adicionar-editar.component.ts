@@ -14,11 +14,14 @@ export class ElementDialogAdicionarEditarComponent implements OnInit {
 
   operacoesAcao!: Operacao;
   isChange: boolean;
+  option: any[] = [
+    {value: 'DayTrade'},
+    {value: 'SwingTrade'},
+  ];
 
   constructor(
     public dialogRef: MatDialogRef<ElementDialogAdicionarEditarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Operacao,) {
-     
     }
 
   async sair(data: any) {
@@ -26,6 +29,7 @@ export class ElementDialogAdicionarEditarComponent implements OnInit {
   }
 
   async salvar(data: any) {
+    console.log(data)
     this.dialogRef.close(data);
   }
 
