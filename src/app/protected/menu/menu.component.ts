@@ -17,6 +17,10 @@ export class MenuComponent implements OnInit {
   }
 
   
+  get usuario(){
+    return this.AuthService.usuario;
+  }
+
   logout(){
     this.AuthService.logout();
     this.route.navigateByUrl('/auth');

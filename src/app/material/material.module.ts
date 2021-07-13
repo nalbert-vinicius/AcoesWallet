@@ -14,6 +14,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 
 
@@ -33,7 +36,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatSortModule,
     MatDialogModule,
     FormsModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }]
 })
 export class MaterialModule { }

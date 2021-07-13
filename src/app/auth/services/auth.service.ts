@@ -52,8 +52,10 @@ export class AuthService {
     return this.http.post<TokenResponse>( url, null, { headers } )
         .pipe(
           map( resp => {
+            console.log(resp)
             this._usuario = {
               msg: resp.msg,
+              nome: resp.nome,
               Ok: resp.Ok,
             }
             return resp.Ok;

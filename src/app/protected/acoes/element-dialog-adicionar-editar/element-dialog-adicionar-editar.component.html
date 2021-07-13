@@ -18,9 +18,13 @@
     <input matInput [(ngModel)]="data.tipoOperacao">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Data Operacao: </mat-label>
-    <input matInput [(ngModel)]="data.dataInicio">
-  </mat-form-field>
+    <mat-label>Data da Operação</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data.dataInicio">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="sair(null)" >Cancelar</button>

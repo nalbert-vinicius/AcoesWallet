@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://api-ewallet.herokuapp.com/'
+  //baseUrl: 'https://api-ewallet.herokuapp.com/'
+  baseUrl: 'http://localhost:3000/'
 };
 
 /*

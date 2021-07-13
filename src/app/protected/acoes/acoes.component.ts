@@ -7,7 +7,7 @@ import { operacaoService } from 'src/app/services/operacaoService';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ElementDialogComponent } from './element-dialog/element-dialog.component';
 import { ElementDialogAdicionarEditarComponent } from './element-dialog-adicionar-editar/element-dialog-adicionar-editar.component';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-acoes',
@@ -21,13 +21,15 @@ export class AcoesComponent implements OnInit {
   listaOperacao: Operacao[] = [];
   displayedColumns: string[] = ['tag', 'quantidade' ,'valorUnitario', 'tipoOperacao', 'dataInicio', 'acoes'];
   dataSource!: MatTableDataSource<Operacao>;
+  durationInSeconds = 5;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
   constructor(
     private operacaoService: operacaoService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -43,16 +45,19 @@ export class AcoesComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    
+  ngAfterViewInit() { }
+
+  openSnackBar(data:any) {
+    this._snackBar.open(data.msg, "Fechar");
   }
   
   async excluirOperacao(id: any){
-    await this.operacaoService.deletarOperacao(id);
+    var retorno = await this.operacaoService.deletarOperacao(id);
+    this.openSnackBar(retorno)
     this.ngOnInit();
   }
 
-  openOperacao(operacao: Operacao): void{
+  deletarOperacao(operacao: Operacao): void{
     const dialogRef = this.dialog.open(ElementDialogComponent, {
       width: '250px',
       data: operacao
@@ -79,13 +84,13 @@ export class AcoesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        
          if (result._id == undefined) {
           this.operacaoService.criarOperacao(result)
               .subscribe(
           (data: Operacao) => {
                 // falta mostrar a mensagem de sucesso
                 console.log(data);
+                this.openSnackBar(data)
                 this.ngOnInit();
           },
           (err) => {
@@ -101,6 +106,7 @@ export class AcoesComponent implements OnInit {
                 (data: Operacao) => {
                       // falta mostrar a mensagem de sucesso
                       console.log(data);
+                      this.openSnackBar(data)
                       this.ngOnInit();
                 },
                 (err) => {
@@ -129,4 +135,15 @@ export class AcoesComponent implements OnInit {
     }
   }
 }
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  templateUrl: 'snack-bar-component-example-snack.html',
+  styles: [`
+    .example-pizza-party {
+      color: hotpink;
+    }
+  `],
+})
+export class PizzaPartyComponent {}
 

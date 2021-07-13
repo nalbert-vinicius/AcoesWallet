@@ -1,6 +1,6 @@
 <div class="container">
-  
-    <button color="primary" mat-button (click)="criarOperacao(null)">Adicionar Operacao</button>
+    <br>
+    <button mat-raised-button color="primary"  (click)="criarOperacao(null)">Cadastrar operação</button>
  
 
   <mat-form-field>
@@ -54,7 +54,7 @@
                   </mat-icon>
               </a>
              
-              <a (click)="openDialog(element._id)" class="pointer" matTooltip="Excluir">
+              <a (click)="deletarOperacao(element._id)" class="pointer" matTooltip="Excluir">
                   <mat-icon color="warn" >
                       delete
                   </mat-icon>
@@ -66,7 +66,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
     </table>
-  
+    
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </div>

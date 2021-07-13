@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
 
+
+
+
 @Component({
   selector: 'app-element-dialog-adicionar-editar',
   templateUrl: './element-dialog-adicionar-editar.component.html',
@@ -34,6 +37,12 @@ export class ElementDialogAdicionarEditarComponent implements OnInit {
     } else {
       this.isChange = false;
     }
+  }
+
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
   }
 
 }

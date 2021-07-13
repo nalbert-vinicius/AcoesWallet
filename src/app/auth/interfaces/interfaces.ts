@@ -1,11 +1,13 @@
 export interface LoginResponse {
     msg?: string,
     Ok?: boolean,
+    nome?: string,
     token?: string
 }
 
 export interface TokenResponse{
     msg?: string,
+    nome?: string,
     Ok?: boolean
 }
 
