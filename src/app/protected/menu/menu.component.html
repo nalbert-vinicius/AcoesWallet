@@ -8,22 +8,18 @@
             </button>       
         </mat-toolbar>
         <mat-nav-list>
-            <a routerLink="./admin"
-               mat-list-item
-               (click)="sidenav.toggle()">
+            <mat-list-item routerLink="./admin" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon color="primary">dashboard</mat-icon>
                 <span>Dashboard</span>
-            </a>
-            <a routerLink="./acoes"
-               mat-list-item
-               (click)="sidenav.toggle()">
-                
+            </mat-list-item>
+            <mat-list-item routerLink="./acoes" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon color="primary">money</mat-icon>
                 <span>Ações</span>
-            </a>
-            <a routerLink="./operacoes"
-               mat-list-item
-               (click)="sidenav.toggle()">
-                <span>Operações</span>
-            </a>
+            </mat-list-item>
+            <mat-list-item routerLink="./operacoes" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon color="primary">important_devices</mat-icon>
+                <span>Operaçoes</span>
+            </mat-list-item>
         </mat-nav-list>  
     </mat-sidenav>
     <mat-toolbar>

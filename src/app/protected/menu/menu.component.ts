@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class MenuComponent implements OnInit {
 
+  isExpanded: boolean = false;
+
   constructor( 
     private route: Router,
     private AuthService: AuthService) { }
