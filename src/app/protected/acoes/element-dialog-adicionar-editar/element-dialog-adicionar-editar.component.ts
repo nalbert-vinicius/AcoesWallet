@@ -15,8 +15,8 @@ export class ElementDialogAdicionarEditarComponent implements OnInit {
   operacoesAcao!: Operacao;
   isChange: boolean;
   option: any[] = [
-    {value: 'DayTrade'},
-    {value: 'SwingTrade'},
+    {value: 'Compra'},
+    {value: 'Venda'},
   ];
 
   constructor(
