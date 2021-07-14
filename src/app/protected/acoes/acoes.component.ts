@@ -84,6 +84,7 @@ export class AcoesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
+        result.valorUnitario = result.valorUnitario.toFixed(2);
          if (result._id == undefined) {
           this.operacaoService.criarOperacao(result)
               .subscribe(
