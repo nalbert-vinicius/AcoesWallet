@@ -19,6 +19,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -42,7 +43,8 @@ import { MatCardModule } from '@angular/material/card';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }]
 })

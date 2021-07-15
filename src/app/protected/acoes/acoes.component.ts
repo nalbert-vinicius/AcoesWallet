@@ -48,7 +48,9 @@ export class AcoesComponent implements OnInit {
   ngAfterViewInit() { }
 
   openSnackBar(data:any) {
-    this._snackBar.open(data.msg, "Fechar");
+    this._snackBar.open(data.msg, "Fechar", {
+      duration: 4000
+    });
   }
   
   async excluirOperacao(id: any){
