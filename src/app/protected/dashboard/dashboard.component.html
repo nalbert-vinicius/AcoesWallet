@@ -3,9 +3,13 @@
     <mat-grid-list cols="1" rowHeight="350px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-card class="dashboard-card">
-            <mat-card-content class="dashboard-card-content">
-              <div>Lista de ações e Porcentagem das ações na carteira</div>
-            </mat-card-content>
+            
+                
+                        <ngx-charts-pie-chart class="pizza" [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+                            (deactivate)="onDeactivate($event)">
+                        </ngx-charts-pie-chart>
+                   
+            
           </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
@@ -25,4 +29,25 @@
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
+    <table>
+      <tr>
+          <td>
+              <ngx-charts-pie-chart [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+                  (deactivate)="onDeactivate($event)">
+              </ngx-charts-pie-chart>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <ngx-charts-pie-grid [results]="productSales" [view]="view" [scheme]="colorScheme" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+              </ngx-charts-pie-grid>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <ngx-charts-advanced-pie-chart [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+              </ngx-charts-advanced-pie-chart>
+          </td>
+      </tr>
+  </table>
   </div>

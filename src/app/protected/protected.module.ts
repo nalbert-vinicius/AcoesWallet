@@ -12,6 +12,7 @@ import { AcoesComponent } from './acoes/acoes.component';
 import { OperacoesComponent } from './operacoes/operacoes.component';
 import { ElementDialogComponent } from './acoes/element-dialog/element-dialog.component';
 import { ElementDialogAdicionarEditarComponent } from './acoes/element-dialog-adicionar-editar/element-dialog-adicionar-editar.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ElementDialogAdicionarEditarComponent } from './acoes/element-dialog-ad
     CommonModule,
     ProtectedRoutingModule,
     MaterialModule,
+    NgxChartsModule,
   ]
 })
 export class ProtectedModule { }

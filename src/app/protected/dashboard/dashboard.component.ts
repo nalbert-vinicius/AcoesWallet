@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { productSales, productSalesMulti } from './product';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,9 @@ export class DashboardComponent {
     private route: Router,
     private AuthService: AuthService,
     private breakpointObserver: BreakpointObserver
-  ) { }
+  ) {
+    Object.assign(this, { productSales, productSalesMulti });
+   }
 
 
   logout(){
@@ -47,4 +50,36 @@ export class DashboardComponent {
     })
   );
 
+  productSales: any[]
+  productSalesMulti: any[]
+
+  view: any[] = [400, 470];
+
+  // options
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+
+  gradient: boolean = false;
+  isDoughnut: boolean = true;
+
+  legendPosition: string = 'below';
+
+  colorScheme = {
+    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
+  };
+
+  ngOnInit(): void {
+  }
+
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
 }
