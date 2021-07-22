@@ -7,7 +7,8 @@ import { operacaoService } from 'src/app/services/operacaoService';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ElementDialogComponent } from './element-dialog/element-dialog.component';
 import { ElementDialogAdicionarEditarComponent } from './element-dialog-adicionar-editar/element-dialog-adicionar-editar.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ElementDialogTableComponent } from './element-dialog-table/element-dialog-table.component';
 
 @Component({
   selector: 'app-acoes',
@@ -19,7 +20,7 @@ export class AcoesComponent implements OnInit {
 
   @ViewChild (MatTable) table: MatTable<any>;
   listaOperacao: Operacao[] = [];
-  displayedColumns: string[] = ['tag', 'quantidade' ,'valorUnitario', 'tipoOperacao', 'dataInicio', 'acoes'];
+  displayedColumns: string[] = ['tag', 'quantidade' , 'valorTotal', 'dataInicio', 'dataAtualizacao', 'acoes'];
   dataSource!: MatTableDataSource<Operacao>;
   durationInSeconds = 5;
 
@@ -38,6 +39,7 @@ export class AcoesComponent implements OnInit {
 
   listarOperacao(){
     this.operacaoService.listarOperacao().subscribe((data: any) =>{
+      console.log(data);
       this.listaOperacao = data.result;
       this.dataSource = new MatTableDataSource(this.listaOperacao)
       this.dataSource.paginator = this.paginator;
@@ -124,8 +126,19 @@ export class AcoesComponent implements OnInit {
     });
   }
 
-  editarOperacao(element: Operacao): void{
-    this.criarOperacao(element);
+  abrirHistorico(element: Operacao): void{
+    this.historicoOperacao(element);
+  }
+
+  historicoOperacao(element: Operacao | null): void{
+    const dialogRef = this.dialog.open(ElementDialogTableComponent, {
+      width: '1000px',
+      height: '500px',
+      data: element
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 

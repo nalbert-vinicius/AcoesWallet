@@ -46,6 +46,14 @@ export interface User {
 }
 
 
+export interface GraficoPizza {
+    name: string,
+    value: number
+}
+
+
+
+
 
 
 

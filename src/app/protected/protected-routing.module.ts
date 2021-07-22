@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuComponent } from './menu/menu.component';
 import { ValidarTokenGuard } from '../guard/validar-token.guard';
 import { AcoesComponent } from './acoes/acoes.component';
-import { OperacoesComponent } from './operacoes/operacoes.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {path: 'admin', component: DashboardComponent},
       {path: 'acoes', component: AcoesComponent},
-      {path: 'operacoes', component: OperacoesComponent},
+      {path: 'historico', component: HistoricoComponent},
       {path: '**', redirectTo: 'admin'}
     ]
   }

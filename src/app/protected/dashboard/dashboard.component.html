@@ -4,12 +4,10 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-card class="dashboard-card">
             
-                
-                        <ngx-charts-pie-chart class="pizza" [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
-                            (deactivate)="onDeactivate($event)">
-                        </ngx-charts-pie-chart>
+            <ngx-charts-pie-chart align="end" class="pizza" [results]="acoes" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)">
+            </ngx-charts-pie-chart>
                    
-            
           </mat-card>
         </mat-grid-tile>
     </mat-grid-list>

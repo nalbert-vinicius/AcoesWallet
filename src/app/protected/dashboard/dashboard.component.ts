@@ -1,16 +1,18 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { productSales, productSalesMulti } from './product';
+import { productSales ,productSalesMulti } from './product';
+import { dashBoardService } from 'src/app/services/dashboardService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [dashBoardService]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
   get usuario(){
     return this.AuthService.usuario;
@@ -19,7 +21,8 @@ export class DashboardComponent {
   constructor(
     private route: Router,
     private AuthService: AuthService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private dashBoardService: dashBoardService
   ) {
     Object.assign(this, { productSales, productSalesMulti });
    }
@@ -29,31 +32,11 @@ export class DashboardComponent {
     this.AuthService.logout();
     this.route.navigateByUrl('/auth');
   }
+  acoes: any[];
+  productSales: any[];
+  productSalesMulti: any[];
 
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
-
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  productSales: any[]
-  productSalesMulti: any[]
-
-  view: any[] = [400, 470];
+  view: any[] = [400, 200];
 
   // options
   showLegend: boolean = true;
@@ -69,6 +52,11 @@ export class DashboardComponent {
   };
 
   ngOnInit(): void {
+    console.log("SALES", productSales)
+    this.dashBoardService.listarAcao().subscribe((data:any) =>{
+      this.acoes = data.obj;
+      console.log(this.acoes)
+    })
   }
 
   onActivate(data): void {

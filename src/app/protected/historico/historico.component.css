@@ -13,6 +13,10 @@
     width: 100%;
   }
 
+  .icones {
+    text-align: right !important;
+  }
+
   th {
     width: 10%;
   }
