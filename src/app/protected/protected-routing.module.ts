@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '',
     component: MenuComponent,
     canActivate: [ ValidarTokenGuard ],
+    canLoad: [ ValidarTokenGuard ],
     children: [
       {path: 'admin', component: DashboardComponent},
       {path: 'acoes', component: AcoesComponent},

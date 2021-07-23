@@ -1,9 +1,7 @@
-.grid-container {
+  .grid-container {
     margin: 20px;
   }
 
-  
-  
   .dashboard-card {
     position: absolute;
     top: 15px;
@@ -21,3 +19,54 @@
   .dashboard-card-content {
     text-align: center;
   }
+
+  .mat-card{
+    height: 350px;
+    border-radius: 25px!important;
+  }
+
+  .card{
+    border: 2px solid #35303030!important
+  }
+
+  .mat-card:not([class*=mat-elevation-z]){
+    box-shadow: none!important;
+  }
+
+  .container {
+    padding: 100px auto;
+  }
+  
+  table {
+    width: 90%;
+    margin-top: 10px;
+    margin: 20px auto;
+  }
+  
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+  
+    th {
+      width: 10%;
+    }
+  
+    .pointer {
+      cursor: pointer;
+    }
+  
+    .data-table{
+      width: 100%;
+      margin: 20px auto;
+    }
+  
+    .card {
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    .mat-elevation-z8 {
+      box-shadow: none!important;
+    }
+  

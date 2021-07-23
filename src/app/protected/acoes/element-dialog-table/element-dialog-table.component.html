@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="card">
-        <h2>Histórico</h2>
+        <h2>Histórico de {{ acao }}</h2>
         <button mat-raised-button color="warn" appearance="fill"  (click)="sair(null)">Fechar</button>        
         <div class="mat-elevation-z8 data-table">
             <table #table mat-table [dataSource]="dataSource" matSort >
