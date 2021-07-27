@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -28,6 +28,8 @@ export class DashboardComponent implements OnInit{
   ) {
     Object.assign(this, { productSales, productSalesMulti });
    }
+
+  
 
 
   logout(){
@@ -60,7 +62,6 @@ export class DashboardComponent implements OnInit{
       this.acoes = data.obj;
       console.log(this.acoes)
     })
-
     this.listarAcoes();
   }
 

@@ -1,3 +1,5 @@
+import { Token } from "@angular/compiler/src/ml_parser/lexer";
+
 export interface LoginResponse {
     msg?: string,
     Ok?: boolean,
@@ -8,6 +10,7 @@ export interface LoginResponse {
 export interface TokenResponse{
     msg?: string,
     nome?: string,
+    token?: Token,
     Ok?: boolean
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy{
 
   isExpanded: boolean = false;
 
@@ -18,10 +18,14 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
   get usuario(){
     return this.AuthService.usuario;
   }
+
+  ngOnDestroy(){
+    console.log("Componente destruido")
+  }
+  
 
   logout(){
     this.AuthService.logout();
