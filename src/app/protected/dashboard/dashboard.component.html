@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-container"  *ngIf="dataSource != '' else semAcao">
     <h1 class="mat-h1">Dashboard</h1>
     <mat-grid-list cols="2" rowHeight="350px">
       <mat-card  class="card">
@@ -26,52 +26,33 @@
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
-            <ngx-charts-pie-chart align="end" class="pizza" [results]="acoes" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+            <ngx-charts-pie-chart class="pizza" [results]="acoes" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
               (deactivate)="onDeactivate($event)">
             </ngx-charts-pie-chart>
         </mat-grid-tile>
       </mat-card>
-        
-        <!-- <mat-grid-tile  [colspan]="1" [rowspan]="1">
-         
-        </mat-grid-tile> -->
-
     </mat-grid-list>
+
     <mat-grid-list cols="2" rowHeight="350px">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card class="dashboard-card">
+        <mat-card class="dashboard-card borda">
           <mat-card-content class="dashboard-card-content">
             <div>Valorização diaria da ação</div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card class="dashboard-card">
+        <mat-card class="dashboard-card borda">
           <mat-card-content class="dashboard-card-content">
             <div>Lista das ações vendidas</div>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
-    <table>
-      <tr>
-          <td>
-              <ngx-charts-pie-chart [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
-                  (deactivate)="onDeactivate($event)">
-              </ngx-charts-pie-chart>
-          </td>
-      </tr>
-      <tr>
-          <td>
-              <ngx-charts-pie-grid [results]="productSales" [view]="view" [scheme]="colorScheme" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-              </ngx-charts-pie-grid>
-          </td>
-      </tr>
-      <tr>
-          <td>
-              <ngx-charts-advanced-pie-chart [results]="productSales" [view]="view" [scheme]="colorScheme" [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-              </ngx-charts-advanced-pie-chart>
-          </td>
-      </tr>
-  </table>
-  </div>
+</div>
+
+<ng-template #semAcao>
+  <mat-grid-list cols="1" rowHeight="350px" class="semAcao">
+    <p style=" font-size: 30px!important;">Não existe ações cadastradas!</p>
+  </mat-grid-list>
+</ng-template>

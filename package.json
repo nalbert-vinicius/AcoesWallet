@@ -2,12 +2,9 @@
   "name": "auth-app",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "local": "ng serve",
     "start": "node server",
-    "build": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build --prod"
   },
   "engines": {
     "node": "15.10.0",

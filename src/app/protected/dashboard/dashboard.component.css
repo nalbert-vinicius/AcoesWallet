@@ -1,72 +1,78 @@
-  .grid-container {
-    margin: 20px;
-  }
+.grid-container {
+  margin: 20px;
+}
 
-  .dashboard-card {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-  }
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
   
-  .more-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-  }
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
   
-  .dashboard-card-content {
-    text-align: center;
-  }
+.dashboard-card-content {
+  text-align: center;
+}
 
-  .mat-card{
-    height: 350px;
-    border-radius: 25px!important;
-  }
+.mat-card{
+  height: 350px;
+  border-radius: 25px!important;
+}
 
-  .card{
-    border: 2px solid #35303030!important
-  }
+.card{
+  border: 2px solid #35303030!important;
+  width: 98%;
+  margin: 20px auto;
+}
 
-  .mat-card:not([class*=mat-elevation-z]){
-    box-shadow: none!important;
-  }
+.mat-card:not([class*=mat-elevation-z]){
+  box-shadow: none!important;
+}
 
-  .container {
-    padding: 100px auto;
-  }
+.container {
+  padding: 100px auto;
+}
   
-  table {
-    width: 90%;
-    margin-top: 10px;
-    margin: 20px auto;
-  }
+table {
+  width: 90%;
+  margin-top: 10px;
+  margin: 20px auto;
+}
   
-    .mat-form-field {
-      font-size: 14px;
-      width: 100%;
-    }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
   
-    th {
-      width: 10%;
-    }
+th {
+  width: 10%;
+}
   
-    .pointer {
-      cursor: pointer;
-    }
+.pointer {
+  cursor: pointer;
+}
   
-    .data-table{
-      width: 100%;
-      margin: 20px auto;
-    }
-  
-    .card {
-      width: 90%;
-      margin: 20px auto;
-    }
+.data-table{
+  width: 100%;
+  margin: 20px auto;
+}
 
-    .mat-elevation-z8 {
-      box-shadow: none!important;
-    }
+.mat-elevation-z8 {
+  box-shadow: none!important;
+}
+
+.semAcao{
+  margin-top: 200px;
+  text-align: center;
+}
+
+.borda{
+  border: 2px solid #35303030!important;
+}
   

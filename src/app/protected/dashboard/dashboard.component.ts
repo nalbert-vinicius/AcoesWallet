@@ -13,29 +13,8 @@ import { operacaoService } from 'src/app/services/operacaoService';
   styleUrls: ['./dashboard.component.css'],
   providers: [dashBoardService, operacaoService]
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
-  get usuario(){
-    return this.AuthService.usuario;
-  }
-
-  constructor(
-    private route: Router,
-    private AuthService: AuthService,
-    private breakpointObserver: BreakpointObserver,
-    private dashBoardService: dashBoardService,
-    private operacaoService: operacaoService
-  ) {
-    Object.assign(this, { productSales, productSalesMulti });
-   }
-
-  
-
-
-  logout(){
-    this.AuthService.logout();
-    this.route.navigateByUrl('/auth');
-  }
   acoes: any[];
   productSales: any[];
   productSalesMulti: any[];
@@ -57,18 +36,33 @@ export class DashboardComponent implements OnInit{
   dataSource: any;
   displayedColumns: string[] = ['position', 'name', 'weight'];
 
+  get usuario(){
+    return this.AuthService.usuario;
+  }
+
+  constructor(
+    private route: Router,
+    private AuthService: AuthService,
+    private breakpointObserver: BreakpointObserver,
+    private dashBoardService: dashBoardService,
+    private operacaoService: operacaoService
+  ) { }
+
+  logout(){
+    this.AuthService.logout();
+    this.route.navigateByUrl('/auth');
+  }
+
   ngOnInit(): void {
     this.dashBoardService.listarAcao().subscribe((data:any) =>{
       this.acoes = data.obj;
-      console.log(this.acoes)
     })
     this.listarAcoes();
   }
 
-  listarAcoes(){
-    this.operacaoService.listarOperacao().subscribe((data: any) =>{
+  async listarAcoes(){
+    await this.operacaoService.listarOperacao().subscribe((data: any) =>{
       this.dataSource = data.result;
-      console.log(this.dataSource)
     });
   }
 

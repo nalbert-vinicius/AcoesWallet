@@ -27,13 +27,13 @@ export class AuthService {
   login(email: String, senha: String){
     const url = `${this.baseUrl}usuarios/login`
     const body = {email, senha}
-    return this.http.post<TokenResponse>(url, body)
+    return this.http.post<LoginResponse>(url, body)
     .pipe(
       tap(result =>{
         if(result.Ok){
           this.userState.setActiveUser(result);
           console.log(this.userState)
-          //localStorage.setItem('token', result.token!);
+          localStorage.setItem('token', result.token!);
           // this._usuario = {
           //   msg: result.msg,
           //   Ok: result.Ok,
@@ -68,6 +68,7 @@ export class AuthService {
 
   async logout(){
     await localStorage.removeItem('loggedInUser');
+    await localStorage.removeItem('token')
   }
 
 }

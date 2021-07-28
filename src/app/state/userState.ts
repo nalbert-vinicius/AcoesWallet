@@ -26,7 +26,7 @@ export class UserState {
     }
 
     getToken(){
-        return this.userActive.token;
+        return localStorage.getItem('token');
     }
 
     logout() {

@@ -9,9 +9,9 @@ export interface LoginResponse {
 
 export interface TokenResponse{
     msg?: string,
+    Ok?: boolean,
     nome?: string,
-    token?: Token,
-    Ok?: boolean
+    token?: string
 }
 
 export interface UsuarioResponse {
