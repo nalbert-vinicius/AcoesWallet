@@ -1,12 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { SeriesHorizontal } from '@swimlane/ngx-charts';
-import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { dashBoardService } from 'src/app/services/dashboardService';
 import { operacaoService } from 'src/app/services/operacaoService';
-import { Moment } from 'moment';
 import * as moment from 'moment';
 
 @Component({
@@ -16,7 +13,7 @@ import * as moment from 'moment';
   providers: [dashBoardService, operacaoService]
 })
 export class DashboardComponent implements OnInit {
-
+  vetor: any[] = [];
   acoes: any[];
   valDiario: any;
   productSales: any[];
@@ -46,7 +43,6 @@ export class DashboardComponent implements OnInit {
   constructor(
     private route: Router,
     private AuthService: AuthService,
-    private breakpointObserver: BreakpointObserver,
     private dashBoardService: dashBoardService,
     private operacaoService: operacaoService
   ) { }
@@ -67,32 +63,43 @@ export class DashboardComponent implements OnInit {
     await this.operacaoService.listarOperacao().subscribe((data: any) =>{
       this.dataSource = data.result;
       for (let i = 0; i < data.result.length; i++) {
-        var t = this.valorDiario(data.result[i].tag);
+       this.valorDiario(data.result[i].tag);
       }
     });
   }
 
-  getLucroPerda(n1, n2){
-    var result = n1-n2;
-    if(result <=0){
-      return "Você está perdendo R$"+result;
-    }else{
-      return "Você está Lucrando R$"+result;
-    }
-  }
-
-  
   async valorDiario(acao){
     var dataa = (moment(new Date()).format("YYYY-MM-DD"));
+    
     await this.dashBoardService.listarValor(acao).subscribe((data: any) =>{
-      console.log(data)
+      var tag = data["Meta Data"]["2. Symbol"];
+      tag = tag.replace(".SAO", "")
+      debugger
       this.valDiario = { 
-        "name": data["Meta Data"]["2. Symbol"],
-        "value": data["Time Series (Daily)"][dataa]["4. close"]
+        "nome": tag,
+        "abertura": data["Time Series (Daily)"][dataa]["1. open"],
+        "maxima": data["Time Series (Daily)"][dataa]["2. high"],
+        "minima": data["Time Series (Daily)"][dataa]["3. low"],
+        "fechamento": data["Time Series (Daily)"][dataa]["4. close"],
+        "volume": data["Time Series (Daily)"][dataa]["5. volume"]
       }
+      this.vetor.push(this.valDiario);
+      console.log(this.vetor);
     })
   }
 
+  getLucroPerda(n1, n2){
+    if(n1 == undefined){
+      return "R$ "+0;
+    }
+
+    if(n2 == undefined){
+      return "R$ "+0
+    }else{
+      var result = n1-n2;
+      return "R$ "+result
+    }
+  }
 
   onActivate(data): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));

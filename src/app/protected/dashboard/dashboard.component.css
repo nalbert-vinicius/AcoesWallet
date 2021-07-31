@@ -75,4 +75,14 @@ th {
 .borda{
   border: 2px solid #35303030!important;
 }
+
+.cardFooter{
+  height: 250px!important;
+  border-radius: 25px!important;
+}
   
+footer {
+  bottom: 0;
+  background: #673ab7;
+  height: 25px;
+}
