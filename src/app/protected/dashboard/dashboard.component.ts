@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async valorDiario(acao){
-    var dataa = (moment(new Date()).format("YYYY-MM-DD"));
+    var dataAtual = (moment(new Date()).format("YYYY-MM-DD"));
     
     await this.dashBoardService.listarValor(acao).subscribe((data: any) =>{
       var tag = data["Meta Data"]["2. Symbol"];
@@ -77,11 +77,11 @@ export class DashboardComponent implements OnInit {
       debugger
       this.valDiario = { 
         "nome": tag,
-        "abertura": data["Time Series (Daily)"][dataa]["1. open"],
-        "maxima": data["Time Series (Daily)"][dataa]["2. high"],
-        "minima": data["Time Series (Daily)"][dataa]["3. low"],
-        "fechamento": data["Time Series (Daily)"][dataa]["4. close"],
-        "volume": data["Time Series (Daily)"][dataa]["5. volume"]
+        "abertura": data["Time Series (Daily)"][dataAtual]["1. open"],
+        "maxima": data["Time Series (Daily)"][dataAtual]["2. high"],
+        "minima": data["Time Series (Daily)"][dataAtual]["3. low"],
+        "fechamento": data["Time Series (Daily)"][dataAtual]["4. close"],
+        "volume": data["Time Series (Daily)"][dataAtual]["5. volume"]
       }
       this.vetor.push(this.valDiario);
       console.log(this.vetor);
