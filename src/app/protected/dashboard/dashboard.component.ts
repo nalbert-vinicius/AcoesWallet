@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     private route: Router,
     private AuthService: AuthService,
     private dashBoardService: dashBoardService,
-    private operacaoService: operacaoService
+    private operacaoService: operacaoService,
   ) { }
 
   logout(){
@@ -69,19 +69,26 @@ export class DashboardComponent implements OnInit {
   }
 
   async valorDiario(acao){
-    var dataAtual = (moment(new Date()).format("YYYY-MM-DD"));
-    
+    var dataAtual = (moment(new Date()));
+    if(this.ehDiaUtil(dataAtual)){
+      if(moment(new Date()).weekday(1).isAfter(moment(new Date()).format("YYYY-MM-DD"))){
+        dataAtual.subtract(3, "days")
+      }
+      dataAtual.subtract(1, "days");
+    }else{
+      dataAtual.subtract(2,"days");
+    }
+
     await this.dashBoardService.listarValor(acao).subscribe((data: any) =>{
       var tag = data["Meta Data"]["2. Symbol"];
       tag = tag.replace(".SAO", "")
-      debugger
       this.valDiario = { 
         "nome": tag,
-        "abertura": data["Time Series (Daily)"][dataAtual]["1. open"],
-        "maxima": data["Time Series (Daily)"][dataAtual]["2. high"],
-        "minima": data["Time Series (Daily)"][dataAtual]["3. low"],
-        "fechamento": data["Time Series (Daily)"][dataAtual]["4. close"],
-        "volume": data["Time Series (Daily)"][dataAtual]["5. volume"]
+        "abertura": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["1. open"],
+        "maxima": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["2. high"],
+        "minima": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["3. low"],
+        "fechamento": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["4. close"],
+        "volume": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["5. volume"]
       }
       this.vetor.push(this.valDiario);
       console.log(this.vetor);
@@ -99,6 +106,24 @@ export class DashboardComponent implements OnInit {
       var result = n1-n2;
       return "R$ "+result
     }
+  }
+
+  ehDiaUtil(date){
+      const givenDate = moment(date)
+      if (!givenDate.isValid()) {
+        return false
+      }
+    
+      if (this.ehFinalDeSemana(givenDate)) {
+        return false
+      }    
+      return true
+  }
+
+  ehFinalDeSemana(givenDate){
+    const dayOfWeek = givenDate.day()
+    const isWeekend = (dayOfWeek === 6 || dayOfWeek === 0)
+    return isWeekend
   }
 
   onActivate(data): void {
