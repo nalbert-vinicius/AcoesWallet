@@ -73,8 +73,9 @@ export class DashboardComponent implements OnInit {
     if(this.ehDiaUtil(dataAtual)){
       if(moment(new Date()).weekday(1).isAfter(moment(new Date()).format("YYYY-MM-DD"))){
         dataAtual.subtract(3, "days")
+      }else{
+        dataAtual.subtract(1, "days");
       }
-      dataAtual.subtract(1, "days");
     }else{
       dataAtual.subtract(2,"days");
     }
