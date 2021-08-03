@@ -1,0 +1,22 @@
+.card{
+    border: 2px solid #35303030!important;
+    width: 98%;
+    margin: 20px auto;
+    height: 260px;
+}
+
+.mat-card:not([class*=mat-elevation-z]){
+    box-shadow: none!important;
+}
+
+.usuario {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+
+.input100 {
+    height: 30px!important;
+    padding: 0px!important;
+}

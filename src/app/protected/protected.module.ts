@@ -11,6 +11,8 @@ import { ElementDialogAdicionarEditarComponent } from './acoes/element-dialog-ad
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HistoricoComponent } from './historico/historico.component';
 import { ElementDialogTableComponent } from './acoes/element-dialog-table/element-dialog-table.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,12 +24,15 @@ import { ElementDialogTableComponent } from './acoes/element-dialog-table/elemen
     ElementDialogAdicionarEditarComponent,
     HistoricoComponent,
     ElementDialogTableComponent,
+    UsuarioComponent,
   ],
   imports: [
     CommonModule,
     ProtectedRoutingModule,
     MaterialModule,
     NgxChartsModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProtectedModule { }

@@ -1,0 +1,31 @@
+<div class="grid-container">
+    <h1 class="mat-h1">Minha Conta</h1>
+    <mat-grid-list cols="4" rowHeight="250px">
+        <mat-card class="card" style="border-radius: 25px!important;">
+            <mat-grid-tile style="width: 10%!important;">
+                <div class="usuario">
+                    <img src="../../../assets/user.png">
+                    <h1>{{ user[0].nome }}</h1>
+                    <p>{{ user[0].email }}</p>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <form [formGroup]="formularioAtualizar">
+                    <p>Nome usuário</p>
+                    <input class="input100" type="text" formControlName="nome" [(ngModel)]="user[0].nome" disabled>
+                    <p>E-mail</p>
+                    <input class="input100" type="email" formControlName="email" [(ngModel)]="user[0].email" disabled>
+                    <p>Senha</p>
+                    <input class="input100" type="password" formControlName="senha" placeholder="Digite sua nova senha">  
+                    
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn" type="submit" [disabled]="formularioAtualizar.invalid" (click)="atualizar()">
+                        Atualizar
+                    </button>
+                    </div>
+                </form>
+            </mat-grid-tile>
+        </mat-card>
+    </mat-grid-list>
+</div>

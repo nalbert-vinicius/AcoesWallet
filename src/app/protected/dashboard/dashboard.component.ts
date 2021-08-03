@@ -16,12 +16,9 @@ export class DashboardComponent implements OnInit {
   vetor: any[] = [];
   acoes: any[];
   valDiario: any;
-  productSales: any[];
-  productSalesMulti: any[];
   listaAcoes: any[];
   view: any[] = [400, 200];
 
-  // options
   showLegend: boolean = true;
   showLabels: boolean = true;
 
@@ -29,16 +26,15 @@ export class DashboardComponent implements OnInit {
   isDoughnut: boolean = true;
 
   legendPosition: string = 'below';
-
+  dataSource: any;
   colorScheme = {
     domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
   };
-  dataSource: any;
-  displayedColumns: string[] = ['position', 'name', 'weight'];
-
-  get usuario(){
-    return this.AuthService.usuario;
-  }
+  displayedColumns: string[] = ['position', 'name', 'weight'];  
+  showXAxis = true;
+  showYAxis = true;
+  showXAxisLabel = true;
+  showYAxisLabel = true;
 
   constructor(
     private route: Router,
@@ -53,10 +49,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dashboard();
+    this.listarAcoes();
+  }
+
+  dashboard(){
     this.dashBoardService.listarAcao().subscribe((data:any) =>{
       this.acoes = data.obj;
     })
-    this.listarAcoes();
   }
 
   async listarAcoes(){
@@ -125,6 +125,10 @@ export class DashboardComponent implements OnInit {
     const dayOfWeek = givenDate.day()
     const isWeekend = (dayOfWeek === 6 || dayOfWeek === 0)
     return isWeekend
+  }
+
+  get usuario(){
+    return this.AuthService.usuario;
   }
 
   onActivate(data): void {

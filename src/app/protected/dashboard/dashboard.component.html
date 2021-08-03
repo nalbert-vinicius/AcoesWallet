@@ -2,6 +2,7 @@
     <h1 class="mat-h1">Dashboard</h1>
     <mat-grid-list cols="2" rowHeight="350px">
       <mat-card  class="card">
+        <div style="text-align: center;">Resumo geral dos rendimentos</div>
         <mat-grid-tile>
             <div class="mat-elevation-z8 data-table">
               <table mat-table [dataSource]="dataSource">
@@ -26,9 +27,8 @@
             </div>
         </mat-grid-tile>
         <mat-grid-tile>
-            <ngx-charts-pie-chart class="pizza" [results]="acoes" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
-              (deactivate)="onDeactivate($event)">
-            </ngx-charts-pie-chart>
+          <ngx-charts-bar-vertical [view]="view" scheme="nightLights" [results]="acoes" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
         </mat-grid-tile>
       </mat-card>
     </mat-grid-list>
@@ -69,6 +69,20 @@
         <mat-card class="dashboard-card borda cardFooter">
           <mat-card-content class="dashboard-card-content">
             <div>Histórico de ações</div>
+            <!-- <ngx-charts-pie-chart class="pizza" [results]="acoes" [view]="view" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)">
+            </ngx-charts-pie-chart> -->
+            <ngx-charts-pie-chart
+              [view]="view"
+              scheme="nightLights"
+              [results]="acoes"
+              [legend]="showLegend"
+              [explodeSlices]="explodeSlices"
+              [labels]="showLabels"
+              [doughnut]="doughnut"
+              [gradient]="gradient"
+              (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>

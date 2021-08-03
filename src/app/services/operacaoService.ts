@@ -3,14 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Operacao } from 'src/app/auth/interfaces/interfaces';
 import { Observable } from 'rxjs';
-import { httpService } from '../services/httpService'
+import { httpService } from '../services/httpService';
 
 @Injectable()
 export class operacaoService extends httpService {
 
     constructor(private http: HttpClient) {
         super();
-        console.log(this.httpOptions)
     }
 
     listarOperacao(): Observable<Operacao[]>{

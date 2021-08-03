@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { usuariosService } from '../../services/usuarioService';
 import { Usuarios } from 'src/model/usuario-model';
-import { usuariosService } from '../../../services/usuarioService';
 
 @Component({
-  selector: 'app-registrar',
-  templateUrl: './registrar.component.html',
-  providers: [usuariosService],
-  styles: [  ]
+  selector: 'app-usuario',
+  templateUrl: './usuario.component.html',
+  styleUrls: ['./usuario.component.css'],
+  providers: [usuariosService]
 })
-export class RegistrarComponent{
-  
+export class UsuarioComponent implements OnInit {
   msg: any;
-
-  formularioCadastro: FormGroup = this.fb.group({
+  user: any;
+  formularioAtualizar: FormGroup = this.fb.group({
     nome: ['',[Validators.required]],
     email: ['',[Validators.required, Validators.email]],
     senha: ['',[Validators.required, Validators.minLength(6)]]
@@ -25,20 +24,30 @@ export class RegistrarComponent{
     private route: Router,
     public usuariosService: usuariosService) { }
 
-  cadastrar(){
+  ngOnInit() {
+    this.getUser()
+    console.log(this.user)
+  }
+
+  atualizar(){
     var usuario: Usuarios = new Usuarios(
-      this.formularioCadastro.value.nome,
-      this.formularioCadastro.value.email,
-      this.formularioCadastro.value.senha
+      this.formularioAtualizar.value.nome,
+      this.formularioAtualizar.value.email,
+      this.formularioAtualizar.value.senha
     );
-    this.usuariosService.cadastrarUsuarios(usuario).then((data: any) =>{
+    this.usuariosService.updateUsuario(usuario).then((data: any) =>{
       //this.route.navigateByUrl('/auth', {skipLocationChange: true});
-      this.msg = "1";
       this.route.navigate(['/auth'], {queryParams: {id: this.msg}});
     }).catch(error =>{
       this.msg = error.error.msg;
       //Swal.fire('Error', error.error.msg, 'error');
     });
-  } 
-  
+  }
+
+  getUser(){
+    this.usuariosService.getUser().then( data =>{
+      this.user = data.result;
+    });
+  }
+
 }

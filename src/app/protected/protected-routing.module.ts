@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ValidarTokenGuard } from '../guard/validar-token.guard';
 import { AcoesComponent } from './acoes/acoes.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: 'admin', component: DashboardComponent},
       {path: 'acoes', component: AcoesComponent},
       {path: 'historico', component: HistoricoComponent},
+      {path: 'usuario', component: UsuarioComponent},
       {path: '**', redirectTo: 'admin'}
     ]
   }
