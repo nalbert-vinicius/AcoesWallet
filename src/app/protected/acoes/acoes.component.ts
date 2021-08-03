@@ -39,7 +39,6 @@ export class AcoesComponent implements OnInit {
 
   listarOperacao(){
     this.operacaoService.listarOperacao().subscribe((data: any) =>{
-      console.log(data);
       this.listaOperacao = data.result;
       this.dataSource = new MatTableDataSource(this.listaOperacao)
       this.dataSource.paginator = this.paginator;
@@ -75,17 +74,17 @@ export class AcoesComponent implements OnInit {
   }
 
   criarOperacao(element: Operacao | null): void{
+    console.log(element)
     const dialogRef = this.dialog.open(ElementDialogAdicionarEditarComponent, {
       width: '250px',
       data: element == null ? {
         dataInicio: null,
-        quantidade: null,
+        quantidadeAtual: null,
         tag: null,
         tipoOperacao: null,
         valorUnitario: null
       } : element
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
         result.valorUnitario = result.valorUnitario.toFixed(2);
@@ -93,14 +92,11 @@ export class AcoesComponent implements OnInit {
           this.operacaoService.criarOperacao(result)
               .subscribe(
           (data: Operacao) => {
-                // falta mostrar a mensagem de sucesso
-                console.log(data);
+
                 this.openSnackBar(data)
                 this.ngOnInit();
           },
           (err) => {
-            // falta mostrar a mensagem de erro
-            console.log(err);
             this.ngOnInit();
           });
           //this.table.renderRows();
@@ -109,14 +105,11 @@ export class AcoesComponent implements OnInit {
               this.operacaoService.editarOperacao(result._id,result)
               .subscribe(
                 (data: Operacao) => {
-                      // falta mostrar a mensagem de sucesso
-                      console.log(data);
                       this.openSnackBar(data)
                       this.ngOnInit();
                 },
                 (err) => {
-                  // falta mostrar a mensagem de erro
-                  console.log(err);
+
                   this.ngOnInit();
                 }
               );
@@ -141,6 +134,9 @@ export class AcoesComponent implements OnInit {
     });
   }
 
+  editarOperacao(element: Operacao): void{
+    this.criarOperacao(element);
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -36,7 +36,7 @@ export interface Usuarios {
 export interface Operacao {
     _id: string,
     dataInicio: Date;
-    quantidade: number;
+    quantidadeAtual: number;
     tag: string;
     tipoOperacao: string;
     usuario: User[],

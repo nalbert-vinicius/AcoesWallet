@@ -37,7 +37,6 @@ export class HistoricoComponent implements OnInit {
 
   listarHistorico(){
     this.historicoService.listarHistorico().subscribe((data: any) =>{
-      console.log(data);
       this.listaOperacao = data.result;
       this.dataSource = new MatTableDataSource(this.listaOperacao)
       this.dataSource.paginator = this.paginator;

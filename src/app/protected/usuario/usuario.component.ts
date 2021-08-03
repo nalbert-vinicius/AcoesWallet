@@ -26,7 +26,6 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     this.getUser()
-    console.log(this.user)
   }
 
   atualizar(){

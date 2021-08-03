@@ -92,7 +92,6 @@ export class DashboardComponent implements OnInit {
         "volume": data["Time Series (Daily)"][dataAtual.format("YYYY-MM-DD")]["5. volume"]
       }
       this.vetor.push(this.valDiario);
-      console.log(this.vetor);
     })
   }
 

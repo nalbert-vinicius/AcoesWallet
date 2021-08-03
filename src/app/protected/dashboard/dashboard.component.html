@@ -8,7 +8,7 @@
               <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="position">
                   <th mat-header-cell *matHeaderCellDef> Ação </th>
-                  <td mat-cell *matCellDef="let element"> {{element.tag}} </td>
+                  <td mat-cell *matCellDef="let element" style="text-transform:uppercase"> {{element.tag}} </td>
                 </ng-container>
               
                 <ng-container matColumnDef="name">

@@ -32,7 +32,6 @@ export class AuthService {
       tap(result =>{
         if(result.Ok){
           this.userState.setActiveUser(result);
-          console.log(this.userState)
           localStorage.setItem('token', result.token!);
           // this._usuario = {
           //   msg: result.msg,
@@ -54,7 +53,6 @@ export class AuthService {
     return this.http.post<TokenResponse>( url, null, { headers } )
         .pipe(
           map( resp => {
-            console.log(resp)
             this._usuario = {
               msg: resp.msg,
               nome: resp.nome,

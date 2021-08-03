@@ -49,9 +49,7 @@ export class ElementDialogTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.listaOperacao)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log("DATA", data)
       this.acao = data.result[0].tag;
-      console.log("ACAO", this.acao)
     });
   }
 

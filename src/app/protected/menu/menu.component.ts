@@ -22,9 +22,7 @@ export class MenuComponent implements OnInit, OnDestroy{
     return this.AuthService.usuario;
   }
 
-  ngOnDestroy(){
-    console.log("Componente destruido")
-  }
+  ngOnDestroy(){  }
   
 
   logout(){
