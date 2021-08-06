@@ -39,9 +39,9 @@
           <mat-card-content class="dashboard-card-content">
             <div>Valor diario de ações</div>
             <mat-tab-group dynamicHeight style="margin-top: 15px;">
-              <mat-tab *ngFor="let element of vetor" label="{{element.nome}}">
+              <mat-tab *ngFor="let element of vetor" label="{{element.nome}}" style="text-transform:uppercase">
                 <div class="mat-elevation-z8 data-table">
-                 <table class="tabelaDiaria">
+                 <table class="tabelaDiaria" style="text-transform:uppercase">
                    <tr>
                      <td>Ação</td>
                      <td>Abertura</td>
@@ -51,7 +51,7 @@
                      <td>Volume</td>
                    </tr><br>
                    <tr>
-                     <td>{{ element.nome }}</td>
+                     <td style="text-transform:uppercase">{{ element.nome }}</td>
                      <td>R$ {{ element.abertura }}</td>
                      <td>R$ {{ element.fechamento }}</td>
                      <td>R$ {{ element.maxima }}</td>
