@@ -1,27 +1,20 @@
-# AuthApp
+# Projeto Carteira de ações
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+Projeto de carteira de ações com o objetivo de registrar suas operações feitas na bolsa, o projeto faz consultas dos valores diarios da B3 por meio de uma API fee www.alphavantage.co
 
-## Development server
+## Rodar projeto - Local
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1º git clone https://github.com/nalbert-vinicius/AcoesWallet.git - Frontend
+2º git clone https://github.com/nalbert-vinicius/api_wallet.git - API Backend
+3º npm install em ambos projetos
+3º rodar comando node server.js
 
-## Code scaffolding
+## Tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ FrontEnd - Angular, angular material, ngx-charts e API da alphavantage www.alphavantage.co
+ BackEnd - NodeJS, javascript e banco de dados mongoDB - mongodb Atlas
 
-## Build
+## Front
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
