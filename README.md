@@ -2,7 +2,7 @@
 
 Projeto de carteira de ações com o objetivo de registrar suas operações feitas na bolsa, o projeto faz consultas dos valores diarios da B3 por meio de uma API fee www.alphavantage.co
 
-O deploy da API e do front foram feitos no heroku
+O deploy da API e do front foram feitos no heroku <br>
 Frontend - https://acoeswallet.herokuapp.com/auth/login
 BackEnd - https://api-ewallet.herokuapp.com/
 
